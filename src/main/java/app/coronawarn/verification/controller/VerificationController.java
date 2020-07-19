@@ -261,7 +261,18 @@ public class VerificationController {
     consumes = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity<?> verifyTan(@Valid @RequestBody Tan tan) {
-    return tanService.getEntityByTan(tan.getTan())
+    log.debug(String.format("verifyTan with tan=%s", tan.getTan()));
+
+    Optional<VerificationTan> entityByTan = tanService.getEntityByTan(tan.getTan());
+    entityByTan.ifPresentOrElse(
+      (VerificationTan verificationTan) -> {
+        log.debug(String.format("tan presents: %s", verificationTan.toString()));
+        log.debug(String.format("Can be redeemed: %s", String.valueOf(verificationTan.canBeRedeemed(LocalDateTime.now()))));
+      },
+      () -> log.debug("tan does not present")
+    );
+
+    return entityByTan
       .filter(t -> t.canBeRedeemed(LocalDateTime.now()))
       .map(t -> {
         tanService.deleteTan(t);
@@ -294,7 +305,7 @@ public class VerificationController {
     @RequestHeader(JwtService.HEADER_NAME_AUTHORIZATION) @Valid AuthorizationToken authorization) {
     if (jwtService.isAuthorized(authorization.getToken())) {
       String teleTan = tanService.generateVerificationTeleTan();
-      log.info("The teleTAN is generated.");
+      log.debug(String.format("The teleTAN{%s} is generated.", teleTan));
       return ResponseEntity.status(HttpStatus.CREATED).body(new TeleTan(teleTan));
     }
     throw new VerificationServerException(HttpStatus.UNAUTHORIZED, "JWT is invalid.");

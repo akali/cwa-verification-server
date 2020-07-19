@@ -43,7 +43,7 @@
     <jsonwebtoken.version>0.11.2</jsonwebtoken.version>
     <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
     <!-- plugins -->
-    <plugin.checkstyle.version>3.1.1</plugin.checkstyle.version>
+<!--    <plugin.checkstyle.version>3.1.1</plugin.checkstyle.version>-->
     <plugin.sonar.version>3.6.1.1688</plugin.sonar.version>
     <plugin.jacoco.version>0.8.5</plugin.jacoco.version>
     <guava.version>29.0-jre</guava.version>
@@ -227,11 +227,11 @@
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring.boot.version}</version>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${plugin.checkstyle.version}</version>
-        </plugin>
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--          <version>${plugin.checkstyle.version}</version>-->
+<!--        </plugin>-->
         <plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
@@ -257,29 +257,29 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <configuration>
-          <configLocation>codestyle/checkstyle.xml</configLocation>
-          <excludes>target/**/*</excludes>
-          <encoding>UTF-8</encoding>
-          <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
-          <violationSeverity>warning</violationSeverity>
-          <failOnViolation>true</failOnViolation>
-          <linkXRef>false</linkXRef>
-        </configuration>
-        <executions>
-          <execution>
-            <id>validate</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <configLocation>codestyle/checkstyle.xml</configLocation>-->
+<!--          <excludes>target/**/*</excludes>-->
+<!--          <encoding>UTF-8</encoding>-->
+<!--          <consoleOutput>true</consoleOutput>-->
+<!--          <failsOnError>true</failsOnError>-->
+<!--          <violationSeverity>warning</violationSeverity>-->
+<!--          <failOnViolation>true</failOnViolation>-->
+<!--          <linkXRef>false</linkXRef>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>validate</id>-->
+<!--            <phase>validate</phase>-->
+<!--            <goals>-->
+<!--              <goal>check</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

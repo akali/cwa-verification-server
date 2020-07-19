@@ -1,0 +1,8 @@
+cwa-testresult-server:
+  host: ${TESTRESULT_SERVER_HOST}
+  port: ${TESTRESULT_SERVER_PORT}
+  url: "${cwa-testresult-server.host}:${cwa-testresult-server.port}"
+jwt:
+  host: ${IAM_VERIFICATION_HOST}
+  port: ${IAM_VERIFICATION_PORT}
+  server: "${jwt.host}:${jwt.port}"

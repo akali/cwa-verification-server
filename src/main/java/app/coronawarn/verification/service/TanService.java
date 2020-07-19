@@ -96,6 +96,7 @@ public class TanService {
    * @param tan the tan which will be deleted
    */
   public void deleteTan(VerificationTan tan) {
+    log.debug(String.format("deleting tan: %s", tan));
     tanRepository.delete(tan);
   }
 

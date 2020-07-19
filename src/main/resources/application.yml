@@ -20,7 +20,7 @@ feign:
         read-timeout: 5000
         logger-level: basic
 jwt:
-  server: ${IAM_VERIFICATION_HOST}:${IAM_VERIFICATION_PORT}
+  server: http://localhost:8081
   enabled: false
 springdoc:
   api-docs:
@@ -29,7 +29,7 @@ springdoc:
     path: /api/swagger
 management:
   server:
-    port: ${VERIFICATION_SERVER_PORT} 
+    port: 8080
   endpoint:
     info:
       enabled: true
@@ -62,14 +62,14 @@ tan:
   valid:
     days: 14
 appsession:
-  tancountermax: 1
+  tancountermax: 100
 entities:
   cleanup:
     days: 21
     rate: 3600000
 
 cwa-testresult-server:
-  url: ${TESTRESULT_SERVER_HOST}:${TESTRESULT_SERVER_PORT} 
+  url: http://localhost:8088
   ssl:
     enabled: false
     one-way: false
